@@ -14,6 +14,13 @@
             margin: 0 auto;
             padding: 20px;
         }
+        #success-message {
+            display: none; /* Hide the success message initially */
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +48,10 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <!-- Success message -->
+        <div id="success-message">
+            <p>Thank you for subscribing! Click <a href="https://www.latestfreestuff.co.uk/free-baby-stuff/" target="_blank">here</a> to visit the website.</p>
         </div>
     </div>
 
@@ -79,8 +90,11 @@
             xhr.open('POST', form.action, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    // Redirect to the desired URL after successful submission
-                    window.location.href = 'https://www.latestfreestuff.co.uk/free-baby-stuff/';
+                    // Hide the form
+                    document.getElementById('mc_embed_signup').style.display = 'none';
+
+                    // Show the success message
+                    document.getElementById('success-message').style.display = 'block';
                 } else {
                     // Handle errors if needed
                     console.error('Form submission failed');
